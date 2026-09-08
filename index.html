@@ -50,7 +50,7 @@
     <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row gap-6">
         
         <!-- Dynamic Sidebar Navigation based on RBAC -->
-        <aside class="w-full md:w-64 bg-white rounded-xl shadow-sm border border-slate-200 p-4 shrink-0">
+        <aside class="w-full md:w-64 bg-white rounded-xl shadow-sm border border-slate-200 p-4 shrink-0 h-fit">
             <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Navigation Menu</p>
             
             <!-- Admin Nav -->
@@ -59,7 +59,7 @@
                     <i class="fa-solid fa-chart-pie w-5"></i><span>Executive Dashboard</span>
                 </button>
                 <button onclick="switchTab('vendors', this)" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
-                    <i class="fa-solid fa-handshake w-5"></i><span>Vendor Onboarding</span>
+                    <i class="fa-solid fa-shield-halved w-5"></i><span>Vendor Verification</span>
                 </button>
                 <button onclick="switchTab('finance', this)" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
                     <i class="fa-solid fa-file-invoice-dollar w-5"></i><span>Financial Settlement</span>
@@ -108,14 +108,14 @@
 
             <div class="mt-8 pt-4 border-t border-slate-100 text-xs text-slate-500 space-y-2">
                 <p><strong>System:</strong> SDMS Prototype</p>
-                <p><strong>Module Coverage:</strong> 7/7</p>
+                <p><strong>Status:</strong> Testing / Validation</p>
             </div>
         </aside>
 
         <!-- Main Content Area -->
         <main class="flex-1">
             
-            <!-- Module 7: Executive Dashboard -->
+            <!-- Executive Dashboard -->
             <section id="dashboard" class="tab-content active space-y-6">
                 <div class="flex justify-between items-center">
                     <div>
@@ -138,7 +138,7 @@
                         <div class="flex justify-between items-start">
                             <div>
                                 <p class="text-xs text-slate-500 font-medium">Pending Vendors</p>
-                                <h3 class="text-2xl font-bold text-amber-600 mt-1">3</h3>
+                                <h3 class="text-2xl font-bold text-amber-600 mt-1">1</h3>
                             </div>
                             <div class="p-2 bg-amber-50 text-amber-600 rounded-lg"><i class="fa-solid fa-user-clock"></i></div>
                         </div>
@@ -162,48 +162,19 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-5">
-                    <h3 class="font-bold text-slate-800 text-lg mb-4">Recent System Logs</h3>
-                    <table class="w-full text-left text-sm text-slate-600">
-                        <thead class="bg-slate-50 text-xs uppercase font-semibold text-slate-500 border-b">
-                            <tr>
-                                <th class="p-3">Timestamp</th>
-                                <th class="p-3">Module</th>
-                                <th class="p-3">Activity</th>
-                                <th class="p-3">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y">
-                            <tr>
-                                <td class="p-3">2026-09-08 14:20</td>
-                                <td class="p-3 font-medium text-slate-800">Client Intake</td>
-                                <td class="p-3">Proposal #PR-204 Approved by Client</td>
-                                <td class="p-3"><span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-medium">Confirmed</span></td>
-                            </tr>
-                            <tr>
-                                <td class="p-3">2026-09-08 11:05</td>
-                                <td class="p-3 font-medium text-slate-800">Vendor Verification</td>
-                                <td class="p-3">AWS API Verification Check Passed</td>
-                                <td class="p-3"><span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-medium">Verified</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </section>
 
-            <!-- Module 1: Vendor Onboarding Screen -->
+            <!-- 🔴 CORE INTERACTION 1: Vendor Verification -->
             <section id="vendors" class="tab-content space-y-6">
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <div class="flex justify-between items-center mb-4">
                         <div>
                             <h2 class="text-xl font-bold text-slate-800">Vendor Onboarding & Verification Portal</h2>
-                            <p class="text-sm text-slate-500">Module 1: Mandatory verification workflow for third-party services.</p>
+                            <p class="text-sm text-slate-500">Module 1: Mandatory verification workflow (Use Case Diagram 4.3).</p>
                         </div>
                     </div>
 
-                    <!-- Enhanced Verification Card -->
-                    <div class="border border-slate-200 rounded-lg mb-4 overflow-hidden">
+                    <div class="border border-slate-200 rounded-lg mb-4 overflow-hidden shadow-sm">
                         <div class="bg-slate-50 p-4 border-b border-slate-200 flex justify-between items-center">
                             <div>
                                 <h3 class="font-bold text-slate-800">QualiTest Pro Services</h3>
@@ -212,9 +183,10 @@
                             <span class="bg-amber-100 text-amber-800 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wide border border-amber-200">Pending Review</span>
                         </div>
                         
-                        <!-- True Verification Details UI -->
                         <div class="p-5 bg-white">
-                            <h4 class="font-bold text-slate-800 text-sm mb-3"><i class="fa-solid fa-shield-halved mr-2 text-blue-600"></i>Vendor Verification Details (System API Check)</h4>
+                            <h4 class="font-bold text-slate-800 text-sm mb-3"><i class="fa-solid fa-shield-halved mr-2 text-blue-600"></i>Vendor Verification Details</h4>
+                            
+                            <!-- Verification Checklist -->
                             <div class="bg-slate-50 rounded-lg p-4 font-mono text-sm border border-slate-200 space-y-2 mb-4">
                                 <div class="flex items-center text-slate-700"><i class="fa-solid fa-check text-emerald-500 w-5"></i> <span>Company Registration Verified</span></div>
                                 <div class="flex items-center text-slate-700"><i class="fa-solid fa-check text-emerald-500 w-5"></i> <span>Tax Credentials Verified</span></div>
@@ -226,22 +198,23 @@
                                 </div>
                             </div>
                             
+                            <!-- Action Buttons -->
                             <div class="flex space-x-3">
-                                <button onclick="alert('Vendor Approved successfully!')" class="bg-emerald-600 text-white text-sm px-4 py-2 rounded-lg font-medium hover:bg-emerald-700 transition shadow-sm"><i class="fa-solid fa-check-double mr-1"></i> Approve Vendor</button>
-                                <button onclick="alert('Request sent.')" class="bg-white border border-slate-300 text-slate-700 text-sm px-4 py-2 rounded-lg font-medium hover:bg-slate-50 transition">Request Additional Information</button>
+                                <button onclick="alert('Verification Audit Log Updated.\n\nPartnership Agreement Issued & Account Activated.')" class="bg-emerald-600 text-white text-sm px-4 py-2 rounded-lg font-medium hover:bg-emerald-700 transition shadow-sm"><i class="fa-solid fa-check-double mr-1"></i> Approve Vendor</button>
+                                <button onclick="alert('Exception Triggered: <extend> Request Additional Information.\n\nNotification sent to vendor.')" class="bg-white border border-slate-300 text-slate-700 text-sm px-4 py-2 rounded-lg font-medium hover:bg-slate-50 transition">Request Additional Information</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Module 2: Client Project Intake & Traceability Screen -->
+            <!-- 🔴 CORE INTERACTION 2: Client Proposal & Traceability -->
             <section id="projects" class="tab-content space-y-6">
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <h2 class="text-xl font-bold text-slate-800">Client Portal & Project Start-Up</h2>
                     <p class="text-sm text-slate-500 mb-6">Module 2: Project intake, approval countdowns, and requirement traceability.</p>
 
-                    <!-- Active Proposal Card with Countdown -->
+                    <!-- Active Proposal Card -->
                     <div class="bg-blue-50/60 border border-blue-200 rounded-xl p-5 mb-8">
                         <div class="flex justify-between items-start">
                             <div>
@@ -249,6 +222,8 @@
                                 <h3 class="text-lg font-bold text-slate-800 mt-2">Enterprise E-Commerce Mobile App</h3>
                                 <p class="text-xs text-slate-500">Target Deadline: 4 Months</p>
                             </div>
+                            
+                            <!-- Risk Mitigation: Server-side Countdown -->
                             <div class="text-right bg-white px-4 py-2 rounded-lg border border-blue-100 shadow-sm">
                                 <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Approval Countdown</p>
                                 <p class="text-xl font-bold text-rose-600 animate-pulse"><i class="fa-solid fa-stopwatch mr-1"></i> 48h 15m remaining</p>
@@ -257,16 +232,18 @@
 
                         <div class="mt-4 pt-4 border-t border-blue-100 flex flex-wrap gap-3 items-center justify-between">
                             <p class="text-sm text-slate-700">Estimated Cost: <strong class="text-lg">RM 35,000</strong></p>
+                            
+                            <!-- State Machine Triggers -->
                             <div class="space-x-2">
-                                <button onclick="alert('Proposal Approved! Deposit Invoice Generated.')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm px-4 py-2 rounded-lg font-medium shadow-sm transition">Approve & Pay Deposit</button>
-                                <button onclick="alert('Change request modal opened.')" class="bg-white text-slate-700 border border-slate-300 text-sm px-4 py-2 rounded-lg font-medium hover:bg-slate-50 transition">Request Scope Change</button>
+                                <button onclick="alert('State Transition: Submitted -> Approved\n\nServer-side timestamp logged. Project Confirmed.')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm px-4 py-2 rounded-lg font-medium shadow-sm transition">Approve & Pay Deposit</button>
+                                <button onclick="alert('State Transition: Submitted -> Under Review\n\nApproval countdown paused. New Requirement Traceability log created.')" class="bg-white text-slate-700 border border-slate-300 text-sm px-4 py-2 rounded-lg font-medium hover:bg-slate-50 transition">Request Scope Change</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- NEW: Change Request History (Requirement Traceability) -->
+                    <!-- Requirement Traceability (Addresses Problem Statement 2) -->
                     <div class="border-t border-slate-200 pt-6">
-                        <h3 class="text-md font-bold text-slate-800 mb-4"><i class="fa-solid fa-clock-rotate-left text-blue-600 mr-2"></i>Requirement Change History (Traceability)</h3>
+                        <h3 class="text-md font-bold text-slate-800 mb-4"><i class="fa-solid fa-clock-rotate-left text-blue-600 mr-2"></i>Requirement Change History</h3>
                         
                         <div class="space-y-3">
                             <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
@@ -275,7 +252,7 @@
                                     <span class="bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded font-medium border border-amber-200">Under Review</span>
                                 </div>
                                 <p class="text-xs text-slate-500 mb-2">Requested: 08 Sep 2026 | Server Timestamp: 14:23:05</p>
-                                <p class="text-sm text-slate-600"><span class="font-medium">Modification Reason:</span> Client requested additional payment functionality for international users.</p>
+                                <p class="text-sm text-slate-600"><span class="font-medium">Modification Reason:</span> Client requested additional payment functionality.</p>
                             </div>
                             
                             <div class="bg-white p-4 rounded-lg border border-slate-200 opacity-75">
@@ -291,44 +268,43 @@
                 </div>
             </section>
 
-            <!-- Module 3: Team Allocation Screen -->
+            <!-- 🔴 CORE INTERACTION 3: Team Allocation & Class Diagram Methods -->
             <section id="team" class="tab-content space-y-6">
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <h2 class="text-xl font-bold text-slate-800">Resource Planning & Automated Team Assignment</h2>
-                    <p class="text-sm text-slate-500 mb-6">Module 3: Skill matching & conflict prevention logic.</p>
+                    <h2 class="text-xl font-bold text-slate-800">Automated Team Assignment Engine</h2>
+                    <p class="text-sm text-slate-500 mb-6">Module 3: Demonstrates Class Diagram methods: checkConflict() and validateSkillMatch().</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <!-- Project Selector -->
                         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 h-fit">
-                            <h3 class="font-bold text-sm text-slate-700 mb-3">1. Select Confirmed Project</h3>
-                            <select class="w-full border border-slate-300 rounded-lg p-2.5 text-sm bg-white outline-none focus:border-blue-500">
-                                <option>E-Commerce Mobile App (Confirmed)</option>
+                            <h3 class="font-bold text-sm text-slate-700 mb-3">Project Requirements</h3>
+                            <select class="w-full border border-slate-300 rounded-lg p-2.5 text-sm bg-white outline-none">
+                                <option>E-Commerce Mobile App</option>
                             </select>
                             <div class="mt-4 text-sm text-slate-600 space-y-2">
-                                <p><i class="fa-solid fa-user-tie w-5"></i> 1 Project Manager</p>
-                                <p><i class="fa-solid fa-code w-5"></i> 2 Developers (React)</p>
-                                <p><i class="fa-solid fa-bug w-5"></i> 1 QA Specialist</p>
+                                <p><i class="fa-solid fa-code w-5"></i> Require: React Developer</p>
+                                <p><i class="fa-solid fa-user-tie w-5"></i> Require: Agile PM</p>
                             </div>
                         </div>
 
                         <!-- Staff Matching Engine -->
                         <div class="md:col-span-2 space-y-4">
-                            <h3 class="font-bold text-sm text-slate-700">2. Match & Assign Staff</h3>
+                            <h3 class="font-bold text-sm text-slate-700">System Validation & Assignment</h3>
                             
-                            <!-- Available Staff -->
-                            <div class="bg-white p-4 rounded-lg border border-slate-200 flex justify-between items-center shadow-sm">
+                            <!-- Scenario 1: Successful Match -->
+                            <div class="bg-white p-4 rounded-lg border border-slate-200 flex justify-between items-center shadow-sm hover:border-blue-300 transition">
                                 <div>
-                                    <p class="font-bold text-sm text-slate-800">Lee Zhi Hao (TP090224)</p>
-                                    <p class="text-xs text-slate-500">Role: Senior Developer | Skill: Node.js, React</p>
+                                    <p class="font-bold text-sm text-slate-800">Lee Zhi Hao</p>
+                                    <p class="text-xs text-slate-500">Role: Developer | Skill: Node.js, React</p>
                                     <span class="inline-block mt-2 bg-emerald-100 text-emerald-800 text-xs px-2 py-1 rounded font-medium"><i class="fa-solid fa-check mr-1"></i> Available (0 active projects)</span>
                                 </div>
-                                <button onclick="alert('Assigned successfully.')" class="bg-blue-50 text-blue-600 border border-blue-200 text-sm px-4 py-2 rounded-lg font-medium hover:bg-blue-100 transition">Assign</button>
+                                <!-- SUCCESSFUL CONFIRMATION BUTTON -->
+                                <button onclick="alert('Assignment Validated\n\nSkill Match: Passed\nAvailability: Passed\nConflict Check: Passed\n\nTeam assignment confirmed.')" class="bg-blue-600 text-white text-sm px-5 py-2 rounded-lg font-medium hover:bg-blue-700 transition shadow-sm">Confirm</button>
                             </div>
 
-                            <!-- Conflict Detection Staff (Updated) -->
+                            <!-- Scenario 2: Conflict Detected -->
                             <div class="bg-rose-50 p-4 rounded-lg border border-rose-200 flex justify-between items-start shadow-sm">
                                 <div>
-                                    <p class="font-bold text-sm text-slate-800">Chiu Jing Xian (TP090216)</p>
+                                    <p class="font-bold text-sm text-slate-800">Chiu Jing Xian</p>
                                     <p class="text-xs text-slate-500 mb-3">Role: Project Manager | Skill: Agile/RAD</p>
                                     
                                     <div class="bg-white border border-rose-200 p-2.5 rounded text-xs text-rose-700 shadow-sm">
@@ -339,8 +315,8 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <!-- Blocked Assignment Button -->
-                                <button onclick="alert('System Alert: checkConflict() triggered.\n\nAssignment blocked — availability conflict detected. Please resolve overlap before assigning this staff member.')" class="bg-slate-200 text-slate-500 text-sm px-4 py-2 rounded-lg font-medium cursor-not-allowed border border-slate-300">Assign</button>
+                                <!-- CONFLICTED CONFIRMATION BUTTON -->
+                                <button onclick="alert('Assignment Conflict\n\nThis team member is already assigned to 2 active projects.\n\nAssignment cannot be confirmed.')" class="bg-slate-300 text-slate-600 text-sm px-5 py-2 rounded-lg font-medium border border-slate-400 hover:bg-slate-400 transition">Confirm</button>
                             </div>
                         </div>
                     </div>
@@ -349,35 +325,19 @@
 
             <!-- Module 4: Meeting Schedule -->
             <section id="meetings" class="tab-content space-y-6">
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <h2 class="text-xl font-bold text-slate-800">Centralized Communications & Scheduling</h2>
-                    <p class="text-sm text-slate-500 mb-6">Module 4: Client and project team meeting coordination.</p>
-                    <div class="bg-slate-50 p-8 rounded border border-slate-200 text-center">
-                        <i class="fa-regular fa-calendar-check text-4xl text-blue-400 mb-3"></i>
-                        <h3 class="text-lg font-bold text-slate-700">Interactive Calendar Loaded</h3>
-                        <p class="text-sm text-slate-500 mt-2">Clients can select available timeslots here to book sync meetings directly with the development team.</p>
-                        <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium">Book New Meeting</button>
-                    </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
+                    <i class="fa-regular fa-calendar-check text-4xl text-blue-400 mb-3"></i>
+                    <h3 class="text-lg font-bold text-slate-700">Meeting Scheduling Active</h3>
+                    <p class="text-sm text-slate-500 mt-2">Centralized calendar for client and project team synchronization.</p>
                 </div>
             </section>
 
             <!-- Module 5: Quality Control & Feedback -->
             <section id="feedback" class="tab-content space-y-6">
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <h2 class="text-xl font-bold text-slate-800">Quality Control & Customer Feedback</h2>
-                    <p class="text-sm text-slate-500 mb-6">Module 5: Post-completion client feedback database.</p>
-                    <div class="border border-slate-200 rounded-lg p-5">
-                        <h3 class="font-bold text-slate-800 text-sm mb-2">Rate Completed Project: Inventory Web App</h3>
-                        <div class="flex text-amber-400 text-xl space-x-1 mb-4">
-                            <i class="fa-solid fa-star cursor-pointer"></i>
-                            <i class="fa-solid fa-star cursor-pointer"></i>
-                            <i class="fa-solid fa-star cursor-pointer"></i>
-                            <i class="fa-solid fa-star cursor-pointer"></i>
-                            <i class="fa-regular fa-star cursor-pointer text-slate-300"></i>
-                        </div>
-                        <textarea rows="3" placeholder="Leave your feedback regarding software quality and team communication..." class="w-full border border-slate-300 rounded-lg p-3 text-sm focus:border-blue-500 outline-none mb-3"></textarea>
-                        <button class="bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-800">Submit Feedback</button>
-                    </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
+                    <i class="fa-solid fa-star text-4xl text-amber-400 mb-3"></i>
+                    <h3 class="text-lg font-bold text-slate-700">Project Feedback Database</h3>
+                    <p class="text-sm text-slate-500 mt-2">Post-completion client ratings are stored here for quality control.</p>
                 </div>
             </section>
 
@@ -386,10 +346,9 @@
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <div class="flex justify-between items-center mb-6">
                         <div>
-                            <h2 class="text-xl font-bold text-slate-800">Automated Financial & Vendor Settlement</h2>
-                            <p class="text-sm text-slate-500">Module 6: Replaces manual reconciliation for accounting & admin.</p>
+                            <h2 class="text-xl font-bold text-slate-800">Automated Financial Settlement</h2>
+                            <p class="text-sm text-slate-500">Module 6: Automated monthly calculation and statement generation.</p>
                         </div>
-                        <button onclick="alert('Month-end reconciliation calculation completed!')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm px-4 py-2 rounded-lg font-medium shadow-sm transition"><i class="fa-solid fa-calculator mr-1"></i> Run Monthly Settlement</button>
                     </div>
 
                     <div class="overflow-x-auto border rounded-lg">
@@ -401,7 +360,6 @@
                                     <th class="p-3">Gross Fees</th>
                                     <th class="p-3">Service Fee Deduction</th>
                                     <th class="p-3">Net Payout Owed</th>
-                                    <th class="p-3">Statement Status</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y">
@@ -411,15 +369,6 @@
                                     <td class="p-3">RM 12,000</td>
                                     <td class="p-3 text-rose-600">- RM 1,200 (10%)</td>
                                     <td class="p-3 font-bold text-slate-800">RM 10,800</td>
-                                    <td class="p-3"><span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-medium">Cheque Issued</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="p-3 font-medium text-slate-800">QualiTest Pro Services</td>
-                                    <td class="p-3">2 Projects</td>
-                                    <td class="p-3">RM 5,000</td>
-                                    <td class="p-3 text-rose-600">- RM 500 (10%)</td>
-                                    <td class="p-3 font-bold text-slate-800">RM 4,500</td>
-                                    <td class="p-3"><span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-medium">Statement Generated</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -440,9 +389,8 @@
 
     <!-- JavaScript for RBAC and Tab Switching -->
     <script>
-        // Role Configuration Logic
         const roleConfig = {
-            'admin': { email: 'admin@cybernex.com', navId: 'nav-admin', defaultTab: 'dashboard' },
+            'admin': { email: 'admin@cybernex.com', navId: 'nav-admin', defaultTab: 'vendors' },
             'management': { email: 'mgmt@cybernex.com', navId: 'nav-management', defaultTab: 'dashboard' },
             'pm': { email: 'manager@cybernex.com', navId: 'nav-pm', defaultTab: 'team' },
             'client': { email: 'client@apexglobal.com', navId: 'nav-client', defaultTab: 'projects' },
@@ -451,44 +399,29 @@
 
         function changeRole(roleKey) {
             const config = roleConfig[roleKey];
-            
-            // Update email display
             document.getElementById('userEmail').innerText = config.email;
-
-            // Hide all sidebars
-            document.querySelectorAll('.role-nav').forEach(nav => {
-                nav.classList.remove('active');
-            });
-            
-            // Show the sidebar for the selected role
+            document.querySelectorAll('.role-nav').forEach(nav => nav.classList.remove('active'));
             const activeNav = document.getElementById(config.navId);
             activeNav.classList.add('active');
-
-            // Automatically switch to the default tab for that role
-            const firstButton = activeNav.querySelector('button');
+            const firstButton = activeNav.querySelector(`button[onclick*="${config.defaultTab}"]`) || activeNav.querySelector('button');
             switchTab(config.defaultTab, firstButton);
         }
 
         function switchTab(tabId, btnElement) {
-            // Hide all main content sections
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            // Show selected section
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-
-            // Reset all navigation button styles (across all navs)
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('bg-blue-50', 'text-blue-600');
                 btn.classList.add('text-slate-600');
             });
-
-            // Highlight the clicked button
             if(btnElement) {
                 btnElement.classList.remove('text-slate-600');
                 btnElement.classList.add('bg-blue-50', 'text-blue-600');
             }
         }
+        
+        // Initialize default view
+        changeRole('admin');
     </script>
 </body>
 </html>
