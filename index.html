@@ -10,30 +10,13 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .role-nav {
-            display: none;
-        }
-
-        .role-nav.active {
-            display: block;
-        }
-
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .role-nav { display: none; }
+        .role-nav.active { display: block; }
         /* Custom Star Rating Hover Effect */
-        .star-rating i:hover~i {
-            color: #cbd5e1;
-        }
-
-        .star-rating:hover i {
-            color: #fbbf24;
-        }
+        .star-rating i:hover~i { color: #cbd5e1; }
+        .star-rating:hover i { color: #fbbf24; }
     </style>
 </head>
 
@@ -43,23 +26,20 @@
     <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div class="bg-blue-600 p-2 rounded-lg text-white font-bold text-xl"><i class="fa-solid fa-cube"></i>
-                </div>
+                <div class="bg-blue-600 p-2 rounded-lg text-white font-bold text-xl"><i class="fa-solid fa-cube"></i></div>
                 <div>
                     <h1 class="font-bold text-lg leading-tight">CyberNex Solutions</h1>
                     <p class="text-xs text-slate-400">Software Development Management System (SDMS)</p>
                 </div>
             </div>
             <div class="flex items-center space-x-4">
-                <span
-                    class="bg-emerald-500/20 text-emerald-400 text-xs px-2.5 py-1 rounded-full border border-emerald-500/30 flex items-center gap-1 hidden sm:flex">
+                <span class="bg-emerald-500/20 text-emerald-400 text-xs px-2.5 py-1 rounded-full border border-emerald-500/30 flex items-center gap-1 hidden sm:flex">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Prototype Active
                 </span>
 
                 <!-- Role Selector (RBAC Implementation) -->
                 <div class="text-right flex flex-col items-end">
-                    <select id="roleSelector" onchange="changeRole(this.value)"
-                        class="bg-slate-800 text-white border border-slate-600 rounded p-1 text-sm font-semibold outline-none cursor-pointer hover:bg-slate-700 transition">
+                    <select id="roleSelector" onchange="changeRole(this.value)" class="bg-slate-800 text-white border border-slate-600 rounded p-1 text-sm font-semibold outline-none cursor-pointer hover:bg-slate-700 transition">
                         <option value="admin">System Administrator</option>
                         <option value="management">Management</option>
                         <option value="pm">Project Manager</option>
@@ -80,64 +60,61 @@
 
             <!-- Admin Nav -->
             <nav id="nav-admin" class="role-nav active space-y-1">
-                <button onclick="switchTab('dashboard', this)"
-                    class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors bg-blue-50 text-blue-600">
+                <button onclick="switchTab('dashboard', this)" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors bg-blue-50 text-blue-600">
                     <i class="fa-solid fa-chart-pie w-5"></i><span>Executive Dashboard</span>
                 </button>
-                <button onclick="switchTab('vendors', this)"
-                    class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
+                <button onclick="switchTab('vendors', this)" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
                     <i class="fa-solid fa-shield-halved w-5"></i><span>Vendor Verification</span>
                 </button>
-                <button onclick="switchTab('finance', this)"
-                    class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
+                <button onclick="switchTab('finance', this)" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
                     <i class="fa-solid fa-file-invoice-dollar w-5"></i><span>Financial Settlement</span>
+                </button>
+                <!-- NEW: Admin can see feedback -->
+                <button onclick="switchTab('feedback', this)" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
+                    <i class="fa-solid fa-star w-5"></i><span>Client Feedback</span>
                 </button>
             </nav>
 
             <!-- Management Nav -->
             <nav id="nav-management" class="role-nav space-y-1">
-                <button onclick="switchTab('dashboard', this)"
-                    class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors bg-blue-50 text-blue-600">
+                <button onclick="switchTab('dashboard', this)" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors bg-blue-50 text-blue-600">
                     <i class="fa-solid fa-chart-pie w-5"></i><span>Executive Dashboard</span>
                 </button>
-                <button onclick="switchTab('finance', this)"
-                    class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
+                <button onclick="switchTab('finance', this)" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
                     <i class="fa-solid fa-file-invoice-dollar w-5"></i><span>Financial Overview</span>
+                </button>
+                <!-- NEW: Management can see feedback -->
+                <button onclick="switchTab('feedback', this)" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
+                    <i class="fa-solid fa-star w-5"></i><span>Client Feedback</span>
                 </button>
             </nav>
 
             <!-- Project Manager Nav -->
             <nav id="nav-pm" class="role-nav space-y-1">
-                <button onclick="switchTab('team', this)"
-                    class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors bg-blue-50 text-blue-600">
+                <button onclick="switchTab('team', this)" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors bg-blue-50 text-blue-600">
                     <i class="fa-solid fa-users-gear w-5"></i><span>Team Allocation</span>
                 </button>
-                <button onclick="switchTab('meetings', this)"
-                    class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
+                <button onclick="switchTab('meetings', this)" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
                     <i class="fa-regular fa-calendar-days w-5"></i><span>Meeting Schedule</span>
                 </button>
             </nav>
 
             <!-- Client Nav -->
             <nav id="nav-client" class="role-nav space-y-1">
-                <button onclick="switchTab('projects', this)"
-                    class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors bg-blue-50 text-blue-600">
+                <button onclick="switchTab('projects', this)" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors bg-blue-50 text-blue-600">
                     <i class="fa-solid fa-folder-open w-5"></i><span>Project & Proposals</span>
                 </button>
-                <button onclick="switchTab('meetings', this)"
-                    class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
+                <button onclick="switchTab('meetings', this)" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
                     <i class="fa-regular fa-calendar-days w-5"></i><span>Meetings</span>
                 </button>
-                <button onclick="switchTab('feedback', this)"
-                    class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
+                <button onclick="switchTab('feedback', this)" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-600 hover:bg-slate-50">
                     <i class="fa-solid fa-star w-5"></i><span>Project Feedback</span>
                 </button>
             </nav>
 
             <!-- Vendor Nav -->
             <nav id="nav-vendor" class="role-nav space-y-1">
-                <button onclick="switchTab('vendor-profile', this)"
-                    class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors bg-blue-50 text-blue-600">
+                <button onclick="switchTab('vendor-profile', this)" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors bg-blue-50 text-blue-600">
                     <i class="fa-solid fa-address-card w-5"></i><span>Vendor Profile</span>
                 </button>
             </nav>
@@ -161,15 +138,15 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- MODIFIED: Changed from grid-cols-4 to grid-cols-5 to fit the new Client Satisfaction KPI -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                     <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                         <div class="flex justify-between items-start">
                             <div>
                                 <p class="text-xs text-slate-500 font-medium">Active Projects</p>
                                 <h3 class="text-2xl font-bold text-slate-800 mt-1">12</h3>
                             </div>
-                            <div class="p-2 bg-blue-50 text-blue-600 rounded-lg"><i
-                                    class="fa-solid fa-diagram-project"></i></div>
+                            <div class="p-2 bg-blue-50 text-blue-600 rounded-lg"><i class="fa-solid fa-diagram-project"></i></div>
                         </div>
                     </div>
                     <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
@@ -178,18 +155,26 @@
                                 <p class="text-xs text-slate-500 font-medium">Pending Vendors</p>
                                 <h3 class="text-2xl font-bold text-amber-600 mt-1">1</h3>
                             </div>
-                            <div class="p-2 bg-amber-50 text-amber-600 rounded-lg"><i
-                                    class="fa-solid fa-user-clock"></i></div>
+                            <div class="p-2 bg-amber-50 text-amber-600 rounded-lg"><i class="fa-solid fa-user-clock"></i></div>
                         </div>
                     </div>
                     <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                         <div class="flex justify-between items-start">
                             <div>
-                                <p class="text-xs text-slate-500 font-medium">Monthly Vendor Payout</p>
+                                <p class="text-xs text-slate-500 font-medium">Vendor Payout</p>
                                 <h3 class="text-xl font-bold text-slate-800 mt-1">RM 24,500</h3>
                             </div>
-                            <div class="p-2 bg-emerald-50 text-emerald-600 rounded-lg"><i
-                                    class="fa-solid fa-money-bill-wave"></i></div>
+                            <div class="p-2 bg-emerald-50 text-emerald-600 rounded-lg"><i class="fa-solid fa-money-bill-wave"></i></div>
+                        </div>
+                    </div>
+                    <!-- NEW KPI: Client Satisfaction -->
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-xs text-slate-500 font-medium">Client Satisfaction</p>
+                                <h3 class="text-2xl font-bold text-amber-500 mt-1">4.8<span class="text-sm text-slate-400 font-normal">/5</span></h3>
+                            </div>
+                            <div class="p-2 bg-amber-50 text-amber-500 rounded-lg"><i class="fa-solid fa-face-smile"></i></div>
                         </div>
                     </div>
                     <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
@@ -198,8 +183,7 @@
                                 <p class="text-xs text-slate-500 font-medium">System Health</p>
                                 <h3 class="text-2xl font-bold text-emerald-600 mt-1">99.8%</h3>
                             </div>
-                            <div class="p-2 bg-emerald-50 text-emerald-600 rounded-lg"><i
-                                    class="fa-solid fa-server"></i></div>
+                            <div class="p-2 bg-emerald-50 text-emerald-600 rounded-lg"><i class="fa-solid fa-server"></i></div>
                         </div>
                     </div>
                 </div>
@@ -220,17 +204,13 @@
                                 <td class="p-3">2026-09-08 14:20</td>
                                 <td class="p-3 font-medium text-slate-800">Client Intake</td>
                                 <td class="p-3">Proposal #PR-204 Approved by Client</td>
-                                <td class="p-3"><span
-                                        class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-medium">Confirmed</span>
-                                </td>
+                                <td class="p-3"><span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-medium">Confirmed</span></td>
                             </tr>
                             <tr>
                                 <td class="p-3">2026-09-08 11:05</td>
                                 <td class="p-3 font-medium text-slate-800">Vendor Verification</td>
                                 <td class="p-3">AWS API Verification Check Passed</td>
-                                <td class="p-3"><span
-                                        class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-medium">Verified</span>
-                                </td>
+                                <td class="p-3"><span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-medium">Verified</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -239,12 +219,12 @@
 
             <!-- Module 1: Vendor Onboarding Screen -->
             <section id="vendors" class="tab-content space-y-6">
+                <!-- Code remains unchanged for Module 1 -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <div class="flex justify-between items-center mb-4">
                         <div>
                             <h2 class="text-xl font-bold text-slate-800">Vendor Onboarding & Verification Portal</h2>
-                            <p class="text-sm text-slate-500">Module 1: Mandatory verification workflow (Use Case
-                                Diagram 4.3).</p>
+                            <p class="text-sm text-slate-500">Module 1: Mandatory verification workflow (Use Case Diagram 4.3).</p>
                         </div>
                     </div>
 
@@ -252,125 +232,122 @@
                         <div class="bg-slate-50 p-4 border-b border-slate-200 flex justify-between items-center">
                             <div>
                                 <h3 class="font-bold text-slate-800">QualiTest Pro Services</h3>
-                                <p class="text-xs text-slate-500">Service: QA & Testing Automation | Rate: RM 850 /
-                                    project</p>
+                                <p class="text-xs text-slate-500">Service: QA & Testing Automation | Rate: RM 850 / project</p>
                             </div>
-                            <span
-                                class="bg-amber-100 text-amber-800 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wide border border-amber-200">Pending
-                                Review</span>
+                            <span class="bg-amber-100 text-amber-800 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wide border border-amber-200">Pending Review</span>
                         </div>
 
                         <div class="p-5 bg-white">
-                            <h4 class="font-bold text-slate-800 text-sm mb-3"><i
-                                    class="fa-solid fa-shield-halved mr-2 text-blue-600"></i>Vendor Verification Details
-                            </h4>
-
-                            <div
-                                class="bg-slate-50 rounded-lg p-4 font-mono text-sm border border-slate-200 space-y-2 mb-4">
-                                <div class="flex items-center text-slate-700"><i
-                                        class="fa-solid fa-check text-emerald-500 w-5"></i> <span>Company Registration
-                                        Verified</span></div>
-                                <div class="flex items-center text-slate-700"><i
-                                        class="fa-solid fa-check text-emerald-500 w-5"></i> <span>Tax Credentials
-                                        Verified</span></div>
-                                <div class="flex items-center text-slate-700"><i
-                                        class="fa-solid fa-check text-emerald-500 w-5"></i> <span>Compliance Documents
-                                        Submitted</span></div>
-                                <div class="flex items-center text-slate-700"><i
-                                        class="fa-solid fa-check text-emerald-500 w-5"></i> <span>Commercial Registry
-                                        Check Passed</span></div>
+                            <h4 class="font-bold text-slate-800 text-sm mb-3"><i class="fa-solid fa-shield-halved mr-2 text-blue-600"></i>Vendor Verification Details</h4>
+                            <div class="bg-slate-50 rounded-lg p-4 font-mono text-sm border border-slate-200 space-y-2 mb-4">
+                                <div class="flex items-center text-slate-700"><i class="fa-solid fa-check text-emerald-500 w-5"></i> <span>Company Registration Verified</span></div>
+                                <div class="flex items-center text-slate-700"><i class="fa-solid fa-check text-emerald-500 w-5"></i> <span>Tax Credentials Verified</span></div>
+                                <div class="flex items-center text-slate-700"><i class="fa-solid fa-check text-emerald-500 w-5"></i> <span>Compliance Documents Submitted</span></div>
+                                <div class="flex items-center text-slate-700"><i class="fa-solid fa-check text-emerald-500 w-5"></i> <span>Commercial Registry Check Passed</span></div>
 
                                 <div class="mt-3 pt-3 border-t border-slate-200">
-                                    <span class="text-slate-500">System Verification Status:</span> <span
-                                        class="font-bold text-emerald-600">PASSED</span>
+                                    <span class="text-slate-500">System Verification Status:</span> <span class="font-bold text-emerald-600">PASSED</span>
                                 </div>
                             </div>
 
                             <div class="flex space-x-3">
-                                <button
-                                    onclick="alert('Verification Audit Log Updated.\n\nPartnership Agreement Issued & Account Activated.')"
-                                    class="bg-emerald-600 text-white text-sm px-4 py-2 rounded-lg font-medium hover:bg-emerald-700 transition shadow-sm"><i
-                                        class="fa-solid fa-check-double mr-1"></i> Approve Vendor</button>
-                                <button
-                                    onclick="alert('Exception Triggered: <extend> Request Additional Information.\n\nNotification sent to vendor.')"
-                                    class="bg-white border border-slate-300 text-slate-700 text-sm px-4 py-2 rounded-lg font-medium hover:bg-slate-50 transition">Request
-                                    Additional Information</button>
+                                <button onclick="alert('Verification Audit Log Updated.\n\nPartnership Agreement Issued & Account Activated.')" class="bg-emerald-600 text-white text-sm px-4 py-2 rounded-lg font-medium hover:bg-emerald-700 transition shadow-sm"><i class="fa-solid fa-check-double mr-1"></i> Approve Vendor</button>
+                                <button onclick="alert('Exception Triggered: <extend> Request Additional Information.\n\nNotification sent to vendor.')" class="bg-white border border-slate-300 text-slate-700 text-sm px-4 py-2 rounded-lg font-medium hover:bg-slate-50 transition">Request Additional Information</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Module 2: Client Project Intake & Traceability Screen -->
+            <!-- MODIFIED Module 2: Client Project Intake & Traceability Screen -->
             <section id="projects" class="tab-content space-y-6">
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <h2 class="text-xl font-bold text-slate-800">Client Portal & Project Start-Up</h2>
-                    <p class="text-sm text-slate-500 mb-6">Module 2: Project intake, approval countdowns, and
-                        requirement traceability.</p>
+                    <p class="text-sm text-slate-500 mb-6">Module 2: Project intake, approval countdowns, and requirement traceability.</p>
 
+                    <!-- NEW: Submit Initial Requirements Form -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 mb-8">
+                        <h3 class="font-bold text-slate-700 text-md mb-4"><i class="fa-solid fa-clipboard-list text-blue-600 mr-2"></i>Submit New Project Request</h3>
+                        <form onsubmit="event.preventDefault(); alert('Requirements submitted successfully! The system is automatically generating a Project Proposal...');" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Project Title</label>
+                                    <input type="text" placeholder="e.g. HR Management System" required class="w-full border border-slate-300 rounded p-2 text-sm focus:border-blue-500 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Software Type</label>
+                                    <select class="w-full border border-slate-300 rounded p-2 text-sm focus:border-blue-500 outline-none">
+                                        <option>Web Application</option>
+                                        <option>Mobile App (iOS/Android)</option>
+                                        <option>Enterprise Software</option>
+                                        <option>API Integration</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Desired Timeline</label>
+                                    <select class="w-full border border-slate-300 rounded p-2 text-sm focus:border-blue-500 outline-none">
+                                        <option>1 - 3 Months</option>
+                                        <option>3 - 6 Months</option>
+                                        <option>6+ Months</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Estimated Budget (Optional)</label>
+                                    <input type="text" placeholder="e.g. RM 20,000" class="w-full border border-slate-300 rounded p-2 text-sm focus:border-blue-500 outline-none">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Desired Features & Details</label>
+                                <textarea rows="3" placeholder="Describe the core functionalities, target users..." required class="w-full border border-slate-300 rounded p-3 text-sm focus:border-blue-500 outline-none"></textarea>
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="submit" class="bg-slate-900 text-white px-5 py-2 rounded-lg font-medium hover:bg-slate-800 transition text-sm shadow-sm"><i class="fa-solid fa-paper-plane mr-2"></i>Submit Requirements</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <h3 class="text-md font-bold text-slate-800 mb-4"><i class="fa-solid fa-file-signature text-blue-600 mr-2"></i>Generated Proposals for Approval</h3>
                     <div class="bg-blue-50/60 border border-blue-200 rounded-xl p-5 mb-8">
                         <div class="flex justify-between items-start">
                             <div>
-                                <span class="bg-blue-600 text-white text-xs font-semibold px-2.5 py-0.5 rounded">Active
-                                    Proposal #PR-2026-09</span>
+                                <span class="bg-blue-600 text-white text-xs font-semibold px-2.5 py-0.5 rounded">Active Proposal #PR-2026-09</span>
                                 <h3 class="text-lg font-bold text-slate-800 mt-2">Enterprise E-Commerce Mobile App</h3>
                                 <p class="text-xs text-slate-500">Target Deadline: 4 Months</p>
                             </div>
                             <div class="text-right bg-white px-4 py-2 rounded-lg border border-blue-100 shadow-sm">
-                                <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Approval
-                                    Countdown</p>
-                                <p class="text-xl font-bold text-rose-600 animate-pulse"><i
-                                        class="fa-solid fa-stopwatch mr-1"></i> 48h 15m remaining</p>
+                                <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Approval Countdown</p>
+                                <p class="text-xl font-bold text-rose-600 animate-pulse"><i class="fa-solid fa-stopwatch mr-1"></i> 48h 15m remaining</p>
                             </div>
                         </div>
 
-                        <div
-                            class="mt-4 pt-4 border-t border-blue-100 flex flex-wrap gap-3 items-center justify-between">
-                            <p class="text-sm text-slate-700">Estimated Cost: <strong class="text-lg">RM 35,000</strong>
-                            </p>
+                        <div class="mt-4 pt-4 border-t border-blue-100 flex flex-wrap gap-3 items-center justify-between">
+                            <p class="text-sm text-slate-700">Estimated Cost: <strong class="text-lg">RM 35,000</strong></p>
                             <div class="space-x-2">
-                                <button
-                                    onclick="alert('State Transition: Submitted -> Approved\n\nServer-side timestamp logged. Project Confirmed.')"
-                                    class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm px-4 py-2 rounded-lg font-medium shadow-sm transition">Approve
-                                    & Pay Deposit</button>
-                                <button
-                                    onclick="alert('State Transition: Submitted -> Under Review\n\nApproval countdown paused. New Requirement Traceability log created.')"
-                                    class="bg-white text-slate-700 border border-slate-300 text-sm px-4 py-2 rounded-lg font-medium hover:bg-slate-50 transition">Request
-                                    Scope Change</button>
+                                <button onclick="alert('State Transition: Submitted -> Approved\n\nServer-side timestamp logged. Project Confirmed.')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm px-4 py-2 rounded-lg font-medium shadow-sm transition">Approve & Pay Deposit</button>
+                                <button onclick="alert('State Transition: Submitted -> Under Review\n\nApproval countdown paused. New Requirement Traceability log created.')" class="bg-white text-slate-700 border border-slate-300 text-sm px-4 py-2 rounded-lg font-medium hover:bg-slate-50 transition">Request Scope Change</button>
                             </div>
                         </div>
                     </div>
 
                     <div class="border-t border-slate-200 pt-6">
-                        <h3 class="text-md font-bold text-slate-800 mb-4"><i
-                                class="fa-solid fa-clock-rotate-left text-blue-600 mr-2"></i>Requirement Change History
-                        </h3>
+                        <h3 class="text-md font-bold text-slate-800 mb-4"><i class="fa-solid fa-clock-rotate-left text-blue-600 mr-2"></i>Requirement Change History</h3>
                         <div class="space-y-3">
                             <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
                                 <div class="flex justify-between items-center mb-1">
-                                    <span class="font-bold text-sm text-slate-800">CR-001: Add Payment Gateway
-                                        Integration</span>
-                                    <span
-                                        class="bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded font-medium border border-amber-200">Under
-                                        Review</span>
+                                    <span class="font-bold text-sm text-slate-800">CR-001: Add Payment Gateway Integration</span>
+                                    <span class="bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded font-medium border border-amber-200">Under Review</span>
                                 </div>
-                                <p class="text-xs text-slate-500 mb-2">Requested: 08 Sep 2026 | Server Timestamp:
-                                    14:23:05</p>
-                                <p class="text-sm text-slate-600"><span class="font-medium">Modification Reason:</span>
-                                    Client requested additional payment functionality.</p>
+                                <p class="text-xs text-slate-500 mb-2">Requested: 08 Sep 2026 | Server Timestamp: 14:23:05</p>
+                                <p class="text-sm text-slate-600"><span class="font-medium">Modification Reason:</span> Client requested additional payment functionality.</p>
                             </div>
 
                             <div class="bg-white p-4 rounded-lg border border-slate-200 opacity-75">
                                 <div class="flex justify-between items-center mb-1">
-                                    <span class="font-bold text-sm text-slate-800">CR-002: Update Mobile Dashboard
-                                        UI</span>
-                                    <span
-                                        class="bg-emerald-100 text-emerald-800 text-xs px-2 py-0.5 rounded font-medium border border-emerald-200">Approved</span>
+                                    <span class="font-bold text-sm text-slate-800">CR-002: Update Mobile Dashboard UI</span>
+                                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2 py-0.5 rounded font-medium border border-emerald-200">Approved</span>
                                 </div>
-                                <p class="text-xs text-slate-500 mb-2">Requested: 06 Sep 2026 | Server Timestamp:
-                                    09:12:44</p>
-                                <p class="text-sm text-slate-600"><span class="font-medium">Modification Reason:</span>
-                                    Updated client branding requirements.</p>
+                                <p class="text-xs text-slate-500 mb-2">Requested: 06 Sep 2026 | Server Timestamp: 09:12:44</p>
+                                <p class="text-sm text-slate-600"><span class="font-medium">Modification Reason:</span> Updated client branding requirements.</p>
                             </div>
                         </div>
                     </div>
@@ -379,16 +356,15 @@
 
             <!-- Module 3: Team Allocation Screen -->
             <section id="team" class="tab-content space-y-6">
+                <!-- Code remains unchanged -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <h2 class="text-xl font-bold text-slate-800">Automated Team Assignment Engine</h2>
-                    <p class="text-sm text-slate-500 mb-6">Module 3: Demonstrates Class Diagram methods: checkConflict()
-                        and validateSkillMatch().</p>
+                    <p class="text-sm text-slate-500 mb-6">Module 3: Demonstrates Class Diagram methods: checkConflict() and validateSkillMatch().</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 h-fit">
                             <h3 class="font-bold text-sm text-slate-700 mb-3">Project Requirements</h3>
-                            <select
-                                class="w-full border border-slate-300 rounded-lg p-2.5 text-sm bg-white outline-none">
+                            <select class="w-full border border-slate-300 rounded-lg p-2.5 text-sm bg-white outline-none">
                                 <option>E-Commerce Mobile App</option>
                             </select>
                             <div class="mt-4 text-sm text-slate-600 space-y-2">
@@ -400,56 +376,44 @@
                         <div class="md:col-span-2 space-y-4">
                             <h3 class="font-bold text-sm text-slate-700">System Validation & Assignment</h3>
 
-                            <div
-                                class="bg-white p-4 rounded-lg border border-slate-200 flex justify-between items-center shadow-sm hover:border-blue-300 transition">
+                            <div class="bg-white p-4 rounded-lg border border-slate-200 flex justify-between items-center shadow-sm hover:border-blue-300 transition">
                                 <div>
                                     <p class="font-bold text-sm text-slate-800">Lee Zhi Hao</p>
                                     <p class="text-xs text-slate-500">Role: Developer | Skill: Node.js, React</p>
-                                    <span
-                                        class="inline-block mt-2 bg-emerald-100 text-emerald-800 text-xs px-2 py-1 rounded font-medium"><i
-                                            class="fa-solid fa-check mr-1"></i> Available (0 active projects)</span>
+                                    <span class="inline-block mt-2 bg-emerald-100 text-emerald-800 text-xs px-2 py-1 rounded font-medium"><i class="fa-solid fa-check mr-1"></i> Available (0 active projects)</span>
                                 </div>
-                                <button
-                                    onclick="alert('Assignment Validated\n\nSkill Match: Passed\nAvailability: Passed\nConflict Check: Passed\n\nTeam assignment confirmed.')"
-                                    class="bg-blue-600 text-white text-sm px-5 py-2 rounded-lg font-medium hover:bg-blue-700 transition shadow-sm">Confirm</button>
+                                <button onclick="alert('Assignment Validated\n\nSkill Match: Passed\nAvailability: Passed\nConflict Check: Passed\n\nTeam assignment confirmed.')" class="bg-blue-600 text-white text-sm px-5 py-2 rounded-lg font-medium hover:bg-blue-700 transition shadow-sm">Confirm</button>
                             </div>
 
-                            <div
-                                class="bg-rose-50 p-4 rounded-lg border border-rose-200 flex justify-between items-start shadow-sm">
+                            <div class="bg-rose-50 p-4 rounded-lg border border-rose-200 flex justify-between items-start shadow-sm">
                                 <div>
                                     <p class="font-bold text-sm text-slate-800">Chiu Jing Xian</p>
                                     <p class="text-xs text-slate-500 mb-3">Role: Project Manager | Skill: Agile/RAD</p>
-
-                                    <div
-                                        class="bg-white border border-rose-200 p-2.5 rounded text-xs text-rose-700 shadow-sm">
-                                        <p class="font-bold mb-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i>
-                                            Conflict Detected</p>
+                                    <div class="bg-white border border-rose-200 p-2.5 rounded text-xs text-rose-700 shadow-sm">
+                                        <p class="font-bold mb-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Conflict Detected</p>
                                         <ul class="list-disc list-inside ml-1">
                                             <li>2 active projects assigned</li>
                                             <li>Availability overlap: <strong>Yes</strong></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <button
-                                    onclick="alert('Assignment Conflict\n\nThis team member is already assigned to 2 active projects.\n\nAssignment cannot be confirmed.')"
-                                    class="bg-slate-300 text-slate-600 text-sm px-5 py-2 rounded-lg font-medium border border-slate-400 hover:bg-slate-400 transition">Confirm</button>
+                                <button onclick="alert('Assignment Conflict\n\nThis team member is already assigned to 2 active projects.\n\nAssignment cannot be confirmed.')" class="bg-slate-300 text-slate-600 text-sm px-5 py-2 rounded-lg font-medium border border-slate-400 hover:bg-slate-400 transition">Confirm</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 🔴 UPDATED Module 4: Meeting Schedule -->
+            <!-- Module 4: Meeting Schedule -->
             <section id="meetings" class="tab-content space-y-6">
+                <!-- Code remains unchanged -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <h2 class="text-xl font-bold text-slate-800">Centralized Meeting Scheduling</h2>
                     <p class="text-sm text-slate-500 mb-6">Module 4: Client and project team synchronization.</p>
 
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                        <!-- Upcoming Meetings Table -->
                         <div class="lg:col-span-2">
-                            <h3 class="font-bold text-slate-700 text-md mb-4"><i
-                                    class="fa-regular fa-calendar text-blue-600 mr-2"></i>Upcoming Meetings</h3>
+                            <h3 class="font-bold text-slate-700 text-md mb-4"><i class="fa-regular fa-calendar text-blue-600 mr-2"></i>Upcoming Meetings</h3>
                             <div class="overflow-x-auto border border-slate-200 rounded-lg">
                                 <table class="w-full text-left text-sm text-slate-600">
                                     <thead class="bg-slate-50 text-xs uppercase font-semibold text-slate-500 border-b">
@@ -468,9 +432,7 @@
                                             </td>
                                             <td class="p-3">Project Kick-off</td>
                                             <td class="p-3">Client + PM + Developer</td>
-                                            <td class="p-3"><span
-                                                    class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-medium">Confirmed</span>
-                                            </td>
+                                            <td class="p-3"><span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-medium">Confirmed</span></td>
                                         </tr>
                                         <tr>
                                             <td class="p-3">
@@ -479,9 +441,7 @@
                                             </td>
                                             <td class="p-3">Requirement Review</td>
                                             <td class="p-3">Client + PM</td>
-                                            <td class="p-3"><span
-                                                    class="bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded font-medium">Pending</span>
-                                            </td>
+                                            <td class="p-3"><span class="bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded font-medium">Pending</span></td>
                                         </tr>
                                         <tr>
                                             <td class="p-3">
@@ -490,148 +450,112 @@
                                             </td>
                                             <td class="p-3">Progress Meeting</td>
                                             <td class="p-3">Client + Project Team</td>
-                                            <td class="p-3"><span
-                                                    class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-medium">Confirmed</span>
-                                            </td>
+                                            <td class="p-3"><span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-medium">Confirmed</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
 
-                        <!-- Schedule Form -->
                         <div class="bg-slate-50 p-5 rounded-lg border border-slate-200 h-fit">
                             <h3 class="font-bold text-slate-700 text-sm mb-4">Schedule / Request Meeting</h3>
-                            <form
-                                onsubmit="event.preventDefault(); alert('Meeting request submitted successfully. Participants will be notified.');"
-                                class="space-y-3">
+                            <form onsubmit="event.preventDefault(); alert('Meeting request submitted successfully. Participants will be notified.');" class="space-y-3">
                                 <div>
                                     <label class="block text-xs font-medium text-slate-600 mb-1">Project</label>
-                                    <input type="text" value="E-Commerce Mobile App" disabled
-                                        class="w-full border border-slate-300 rounded p-2 text-sm bg-slate-100 text-slate-500">
+                                    <input type="text" value="E-Commerce Mobile App" disabled class="w-full border border-slate-300 rounded p-2 text-sm bg-slate-100 text-slate-500">
                                 </div>
                                 <div>
                                     <label class="block text-xs font-medium text-slate-600 mb-1">Meeting Title</label>
-                                    <input type="text" placeholder="e.g. Design Sync" required
-                                        class="w-full border border-slate-300 rounded p-2 text-sm focus:border-blue-500 outline-none">
+                                    <input type="text" placeholder="e.g. Design Sync" required class="w-full border border-slate-300 rounded p-2 text-sm focus:border-blue-500 outline-none">
                                 </div>
                                 <div class="grid grid-cols-2 gap-2">
                                     <div>
                                         <label class="block text-xs font-medium text-slate-600 mb-1">Date</label>
-                                        <input type="date" required
-                                            class="w-full border border-slate-300 rounded p-2 text-sm focus:border-blue-500 outline-none">
+                                        <input type="date" required class="w-full border border-slate-300 rounded p-2 text-sm focus:border-blue-500 outline-none">
                                     </div>
                                     <div>
                                         <label class="block text-xs font-medium text-slate-600 mb-1">Time</label>
-                                        <input type="time" required
-                                            class="w-full border border-slate-300 rounded p-2 text-sm focus:border-blue-500 outline-none">
+                                        <input type="time" required class="w-full border border-slate-300 rounded p-2 text-sm focus:border-blue-500 outline-none">
                                     </div>
                                 </div>
                                 <div>
                                     <label class="block text-xs font-medium text-slate-600 mb-1">Participants</label>
-                                    <select
-                                        class="w-full border border-slate-300 rounded p-2 text-sm focus:border-blue-500 outline-none">
+                                    <select class="w-full border border-slate-300 rounded p-2 text-sm focus:border-blue-500 outline-none">
                                         <option>Client + PM</option>
                                         <option>Client + Full Development Team</option>
                                         <option>PM + QA Specialist</option>
                                     </select>
                                 </div>
-                                <button type="submit"
-                                    class="w-full mt-2 bg-blue-600 text-white text-sm py-2.5 rounded font-medium hover:bg-blue-700 transition">Schedule
-                                    Meeting</button>
+                                <button type="submit" class="w-full mt-2 bg-blue-600 text-white text-sm py-2.5 rounded font-medium hover:bg-blue-700 transition">Schedule Meeting</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 🔴 UPDATED Module 5: Quality Control & Feedback -->
+            <!-- Module 5: Quality Control & Feedback -->
             <section id="feedback" class="tab-content space-y-6">
+                <!-- Code remains unchanged -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <h2 class="text-xl font-bold text-slate-800">Project Feedback Database</h2>
-                    <p class="text-sm text-slate-500 mb-6">Module 5: Post-completion client feedback for quality
-                        control.</p>
+                    <p class="text-sm text-slate-500 mb-6">Module 5: Post-completion client feedback for quality control.</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Submit Feedback Form -->
                         <div>
-                            <h3 class="font-bold text-slate-700 text-md mb-4"><i
-                                    class="fa-solid fa-pen-to-square text-blue-600 mr-2"></i>Submit New Feedback</h3>
+                            <h3 class="font-bold text-slate-700 text-md mb-4"><i class="fa-solid fa-pen-to-square text-blue-600 mr-2"></i>Submit New Feedback</h3>
                             <div class="border border-slate-200 rounded-lg p-5 bg-slate-50">
-                                <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Completed
-                                    Project</p>
+                                <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Completed Project</p>
                                 <p class="font-bold text-slate-800 mb-4">E-Commerce Mobile App</p>
 
                                 <div class="space-y-3 mb-4">
                                     <div class="flex justify-between items-center">
                                         <span class="text-sm text-slate-600 font-medium">Overall Rating:</span>
                                         <div class="text-amber-400 text-sm star-rating cursor-pointer space-x-0.5">
-                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                                class="fa-regular fa-star text-slate-300"></i>
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star text-slate-300"></i>
                                         </div>
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <span class="text-sm text-slate-600 font-medium">Service Quality:</span>
                                         <div class="text-amber-400 text-sm star-rating cursor-pointer space-x-0.5">
-                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                                class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                                         </div>
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <span class="text-sm text-slate-600 font-medium">Communication:</span>
                                         <div class="text-amber-400 text-sm star-rating cursor-pointer space-x-0.5">
-                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                                class="fa-solid fa-star"></i><i
-                                                class="fa-regular fa-star text-slate-300"></i><i
-                                                class="fa-regular fa-star text-slate-300"></i>
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star text-slate-300"></i><i class="fa-regular fa-star text-slate-300"></i>
                                         </div>
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <span class="text-sm text-slate-600 font-medium">Project Delivery:</span>
                                         <div class="text-amber-400 text-sm star-rating cursor-pointer space-x-0.5">
-                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                                class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                                         </div>
                                     </div>
                                 </div>
 
                                 <label class="block text-xs font-medium text-slate-600 mb-1">Comments:</label>
-                                <textarea rows="3" placeholder="Enter your feedback..."
-                                    class="w-full border border-slate-300 rounded p-3 text-sm focus:border-blue-500 outline-none mb-3"></textarea>
+                                <textarea rows="3" placeholder="Enter your feedback..." class="w-full border border-slate-300 rounded p-3 text-sm focus:border-blue-500 outline-none mb-3"></textarea>
 
-                                <button onclick="alert('Thank you! Your feedback has been recorded in the database.')"
-                                    class="bg-slate-900 text-white w-full py-2.5 rounded font-medium hover:bg-slate-800 transition text-sm">Submit
-                                    Feedback</button>
+                                <button onclick="alert('Thank you! Your feedback has been recorded in the database.')" class="bg-slate-900 text-white w-full py-2.5 rounded font-medium hover:bg-slate-800 transition text-sm">Submit Feedback</button>
                             </div>
                         </div>
 
-                        <!-- Previous Feedback History -->
                         <div>
-                            <h3 class="font-bold text-slate-700 text-md mb-4"><i
-                                    class="fa-solid fa-clock-rotate-left text-blue-600 mr-2"></i>Previous Feedback</h3>
+                            <h3 class="font-bold text-slate-700 text-md mb-4"><i class="fa-solid fa-clock-rotate-left text-blue-600 mr-2"></i>Previous Feedback</h3>
                             <div class="bg-white border border-slate-200 rounded-lg p-5 shadow-sm">
                                 <div class="flex justify-between items-start mb-2">
                                     <div>
                                         <p class="font-bold text-slate-800 text-sm">Inventory Management System</p>
                                         <p class="text-xs text-slate-500">Submitted: 05 Sep 2026</p>
                                     </div>
-                                    <span
-                                        class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-medium">Status:
-                                        Recorded</span>
+                                    <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-medium">Status: Recorded</span>
                                 </div>
                                 <div class="flex items-center space-x-2 mt-3 mb-2">
-                                    <div class="text-amber-400 text-sm"><i class="fa-solid fa-star"></i><i
-                                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                            class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
-                                    </div>
+                                    <div class="text-amber-400 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
                                     <span class="font-bold text-slate-700 text-sm">4.5 / 5</span>
                                 </div>
-                                <p class="text-sm text-slate-600 italic border-l-2 border-slate-300 pl-3">"The team was
-                                    highly responsive and delivered the software ahead of schedule. Excellent API
-                                    integration work."</p>
+                                <p class="text-sm text-slate-600 italic border-l-2 border-slate-300 pl-3">"The team was highly responsive and delivered the software ahead of schedule. Excellent API integration work."</p>
                             </div>
                         </div>
                     </div>
@@ -640,12 +564,12 @@
 
             <!-- Module 6: Financial Settlement Screen -->
             <section id="finance" class="tab-content space-y-6">
+                <!-- Kept the previous RM 5000.55 modification -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <div class="flex justify-between items-center mb-6">
                         <div>
                             <h2 class="text-xl font-bold text-slate-800">Automated Financial Settlement</h2>
-                            <p class="text-sm text-slate-500">Module 6: Automated monthly calculation and statement
-                                generation.</p>
+                            <p class="text-sm text-slate-500">Module 6: Automated monthly calculation and statement generation.</p>
                         </div>
                     </div>
 
@@ -668,7 +592,7 @@
                                     <td class="p-3 text-rose-600">- RM 1,200 (10%)</td>
                                     <td class="p-3 font-bold text-slate-800">RM 10,800</td>
                                 </tr>
-                                <!-- 下面是你新添加的行 -->
+                                <!-- Added earlier row -->
                                 <tr>
                                     <td class="p-3 font-medium text-slate-800">QualiTest Pro Services</td>
                                     <td class="p-3">2 Projects</td>
@@ -682,21 +606,17 @@
                 </div>
             </section>
 
-            <!-- 🔴 UPDATED Vendor Profile Screen -->
+            <!-- Vendor Profile Screen -->
             <section id="vendor-profile" class="tab-content space-y-6">
+                <!-- Code remains unchanged -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <h2 class="text-xl font-bold text-slate-800">Vendor Services & Profile</h2>
-                    <p class="text-sm text-slate-500 mb-6">Manage rate cards, view compliance status, and download
-                        statements.</p>
+                    <p class="text-sm text-slate-500 mb-6">Manage rate cards, view compliance status, and download statements.</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                        <!-- Col 1 & 2: Info & Compliance -->
                         <div class="md:col-span-2 space-y-6">
-                            <!-- Vendor Information -->
                             <div class="border border-slate-200 rounded-lg p-5">
-                                <h3 class="font-bold text-slate-700 text-sm mb-4 border-b pb-2"><i
-                                        class="fa-solid fa-building text-blue-600 mr-2"></i>Vendor Information</h3>
+                                <h3 class="font-bold text-slate-700 text-sm mb-4 border-b pb-2"><i class="fa-solid fa-building text-blue-600 mr-2"></i>Vendor Information</h3>
                                 <div class="grid grid-cols-2 gap-4 text-sm">
                                     <div>
                                         <p class="text-slate-500 text-xs mb-1">Company Name</p>
@@ -711,56 +631,41 @@
                                         <p class="font-medium text-slate-800">RM 850 / project</p>
                                     </div>
                                     <div>
-                                        <p class="text-slate-500 text-xs mb-1">System Status</p><span
-                                            class="bg-emerald-100 text-emerald-800 text-xs px-2 py-0.5 rounded font-bold">Verified</span>
+                                        <p class="text-slate-500 text-xs mb-1">System Status</p><span class="bg-emerald-100 text-emerald-800 text-xs px-2 py-0.5 rounded font-bold">Verified</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Compliance Status -->
                             <div class="border border-slate-200 rounded-lg p-5 bg-slate-50">
-                                <h3 class="font-bold text-slate-700 text-sm mb-4 border-b border-slate-200 pb-2"><i
-                                        class="fa-solid fa-file-shield text-blue-600 mr-2"></i>Compliance Status</h3>
+                                <h3 class="font-bold text-slate-700 text-sm mb-4 border-b border-slate-200 pb-2"><i class="fa-solid fa-file-shield text-blue-600 mr-2"></i>Compliance Status</h3>
                                 <ul class="space-y-3 text-sm font-medium text-slate-700">
-                                    <li class="flex items-center"><i
-                                            class="fa-solid fa-check text-emerald-500 mr-3 w-4"></i>Company Registration
-                                    </li>
-                                    <li class="flex items-center"><i
-                                            class="fa-solid fa-check text-emerald-500 mr-3 w-4"></i>Tax Credentials</li>
-                                    <li class="flex items-center"><i
-                                            class="fa-solid fa-check text-emerald-500 mr-3 w-4"></i>Compliance Documents
-                                        (Updated 01 Sep 2026)</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3 w-4"></i>Company Registration</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3 w-4"></i>Tax Credentials</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3 w-4"></i>Compliance Documents (Updated 01 Sep 2026)</li>
                                 </ul>
                             </div>
                         </div>
 
-                        <!-- Col 3: Monthly Statements -->
                         <div>
                             <div class="bg-blue-50 border border-blue-200 rounded-lg p-5 h-full">
-                                <h3 class="font-bold text-blue-900 text-sm mb-4 border-b border-blue-200 pb-2"><i
-                                        class="fa-solid fa-receipt mr-2"></i>Monthly Statements</h3>
+                                <h3 class="font-bold text-blue-900 text-sm mb-4 border-b border-blue-200 pb-2"><i class="fa-solid fa-receipt mr-2"></i>Monthly Statements</h3>
                                 <div class="bg-white rounded p-4 shadow-sm border border-slate-100">
                                     <p class="font-bold text-slate-800 text-sm mb-3">September 2026</p>
                                     <div class="space-y-2 text-xs text-slate-600 border-b pb-3 mb-3">
-                                        <div class="flex justify-between"><span>Completed Projects:</span> <span
-                                                class="font-bold">2</span></div>
-                                        <div class="flex justify-between"><span>Gross Fees:</span> <span>RM 5,000</span>
-                                        </div>
-                                        <div class="flex justify-between text-rose-600"><span>Service Fee (10%):</span>
-                                            <span>- RM 500</span></div>
+                                        <div class="flex justify-between"><span>Completed Projects:</span> <span class="font-bold">2</span></div>
+                                        <div class="flex justify-between"><span>Gross Fees:</span> <span>RM 5,000</span></div>
+                                        <div class="flex justify-between text-rose-600"><span>Service Fee (10%):</span> <span>- RM 500</span></div>
                                     </div>
                                     <div class="flex justify-between items-center mb-4">
                                         <span class="text-sm font-bold text-slate-700">Net Payout:</span>
                                         <span class="text-lg font-bold text-emerald-600">RM 4,500</span>
                                     </div>
-                                    <button onclick="alert('Downloading Statement PDF...')"
-                                        class="w-full bg-blue-600 text-white text-xs py-2 rounded font-medium hover:bg-blue-700 transition">
+                                    <button onclick="alert('Downloading Statement PDF...')" class="w-full bg-blue-600 text-white text-xs py-2 rounded font-medium hover:bg-blue-700 transition">
                                         <i class="fa-solid fa-download mr-1"></i> View Statement
                                     </button>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
@@ -805,5 +710,4 @@
         changeRole('admin');
     </script>
 </body>
-
 </html>
