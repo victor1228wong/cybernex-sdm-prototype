@@ -14,6 +14,7 @@
         .tab-content.active { display: block; }
         .role-nav { display: none; }
         .role-nav.active { display: block; }
+
         /* Custom Star Rating Hover Effect */
         .star-rating i:hover~i { color: #cbd5e1; }
         .star-rating:hover i { color: #fbbf24; }
@@ -161,7 +162,7 @@
                     <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                         <div class="flex justify-between items-start">
                             <div>
-                                <p class="text-xs text-slate-500 font-medium">Vendor Payout</p>
+                                <p class="text-xs text-slate-500 font-medium">Monthly Vendor Payout</p>
                                 <h3 class="text-xl font-bold text-slate-800 mt-1">RM 24,500</h3>
                             </div>
                             <div class="p-2 bg-emerald-50 text-emerald-600 rounded-lg"><i class="fa-solid fa-money-bill-wave"></i></div>
@@ -219,7 +220,6 @@
 
             <!-- Module 1: Vendor Onboarding Screen -->
             <section id="vendors" class="tab-content space-y-6">
-                <!-- Code remains unchanged for Module 1 -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <div class="flex justify-between items-center mb-4">
                         <div>
@@ -239,6 +239,7 @@
 
                         <div class="p-5 bg-white">
                             <h4 class="font-bold text-slate-800 text-sm mb-3"><i class="fa-solid fa-shield-halved mr-2 text-blue-600"></i>Vendor Verification Details</h4>
+
                             <div class="bg-slate-50 rounded-lg p-4 font-mono text-sm border border-slate-200 space-y-2 mb-4">
                                 <div class="flex items-center text-slate-700"><i class="fa-solid fa-check text-emerald-500 w-5"></i> <span>Company Registration Verified</span></div>
                                 <div class="flex items-center text-slate-700"><i class="fa-solid fa-check text-emerald-500 w-5"></i> <span>Tax Credentials Verified</span></div>
@@ -356,7 +357,6 @@
 
             <!-- Module 3: Team Allocation Screen -->
             <section id="team" class="tab-content space-y-6">
-                <!-- Code remains unchanged -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <h2 class="text-xl font-bold text-slate-800">Automated Team Assignment Engine</h2>
                     <p class="text-sm text-slate-500 mb-6">Module 3: Demonstrates Class Diagram methods: checkConflict() and validateSkillMatch().</p>
@@ -389,6 +389,7 @@
                                 <div>
                                     <p class="font-bold text-sm text-slate-800">Chiu Jing Xian</p>
                                     <p class="text-xs text-slate-500 mb-3">Role: Project Manager | Skill: Agile/RAD</p>
+
                                     <div class="bg-white border border-rose-200 p-2.5 rounded text-xs text-rose-700 shadow-sm">
                                         <p class="font-bold mb-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Conflict Detected</p>
                                         <ul class="list-disc list-inside ml-1">
@@ -406,12 +407,12 @@
 
             <!-- Module 4: Meeting Schedule -->
             <section id="meetings" class="tab-content space-y-6">
-                <!-- Code remains unchanged -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <h2 class="text-xl font-bold text-slate-800">Centralized Meeting Scheduling</h2>
                     <p class="text-sm text-slate-500 mb-6">Module 4: Client and project team synchronization.</p>
 
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Upcoming Meetings Table -->
                         <div class="lg:col-span-2">
                             <h3 class="font-bold text-slate-700 text-md mb-4"><i class="fa-regular fa-calendar text-blue-600 mr-2"></i>Upcoming Meetings</h3>
                             <div class="overflow-x-auto border border-slate-200 rounded-lg">
@@ -457,6 +458,7 @@
                             </div>
                         </div>
 
+                        <!-- Schedule Form -->
                         <div class="bg-slate-50 p-5 rounded-lg border border-slate-200 h-fit">
                             <h3 class="font-bold text-slate-700 text-sm mb-4">Schedule / Request Meeting</h3>
                             <form onsubmit="event.preventDefault(); alert('Meeting request submitted successfully. Participants will be notified.');" class="space-y-3">
@@ -493,15 +495,17 @@
                 </div>
             </section>
 
-            <!-- Module 5: Quality Control & Feedback -->
+            <!-- MODIFIED Module 5: Quality Control & Feedback -->
             <section id="feedback" class="tab-content space-y-6">
-                <!-- Code remains unchanged -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <h2 class="text-xl font-bold text-slate-800">Project Feedback Database</h2>
                     <p class="text-sm text-slate-500 mb-6">Module 5: Post-completion client feedback for quality control.</p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
+                    <!-- Added id="feedback-grid" -->
+                    <div id="feedback-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        
+                        <!-- Submit Feedback Form (Added id="submit-feedback-form") -->
+                        <div id="submit-feedback-form">
                             <h3 class="font-bold text-slate-700 text-md mb-4"><i class="fa-solid fa-pen-to-square text-blue-600 mr-2"></i>Submit New Feedback</h3>
                             <div class="border border-slate-200 rounded-lg p-5 bg-slate-50">
                                 <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Completed Project</p>
@@ -541,6 +545,7 @@
                             </div>
                         </div>
 
+                        <!-- Previous Feedback History -->
                         <div>
                             <h3 class="font-bold text-slate-700 text-md mb-4"><i class="fa-solid fa-clock-rotate-left text-blue-600 mr-2"></i>Previous Feedback</h3>
                             <div class="bg-white border border-slate-200 rounded-lg p-5 shadow-sm">
@@ -564,7 +569,6 @@
 
             <!-- Module 6: Financial Settlement Screen -->
             <section id="finance" class="tab-content space-y-6">
-                <!-- Kept the previous RM 5000.55 modification -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <div class="flex justify-between items-center mb-6">
                         <div>
@@ -592,7 +596,7 @@
                                     <td class="p-3 text-rose-600">- RM 1,200 (10%)</td>
                                     <td class="p-3 font-bold text-slate-800">RM 10,800</td>
                                 </tr>
-                                <!-- Added earlier row -->
+                                <!-- Added row -->
                                 <tr>
                                     <td class="p-3 font-medium text-slate-800">QualiTest Pro Services</td>
                                     <td class="p-3">2 Projects</td>
@@ -608,13 +612,15 @@
 
             <!-- Vendor Profile Screen -->
             <section id="vendor-profile" class="tab-content space-y-6">
-                <!-- Code remains unchanged -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <h2 class="text-xl font-bold text-slate-800">Vendor Services & Profile</h2>
                     <p class="text-sm text-slate-500 mb-6">Manage rate cards, view compliance status, and download statements.</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                        <!-- Col 1 & 2: Info & Compliance -->
                         <div class="md:col-span-2 space-y-6">
+                            <!-- Vendor Information -->
                             <div class="border border-slate-200 rounded-lg p-5">
                                 <h3 class="font-bold text-slate-700 text-sm mb-4 border-b pb-2"><i class="fa-solid fa-building text-blue-600 mr-2"></i>Vendor Information</h3>
                                 <div class="grid grid-cols-2 gap-4 text-sm">
@@ -636,6 +642,7 @@
                                 </div>
                             </div>
 
+                            <!-- Compliance Status -->
                             <div class="border border-slate-200 rounded-lg p-5 bg-slate-50">
                                 <h3 class="font-bold text-slate-700 text-sm mb-4 border-b border-slate-200 pb-2"><i class="fa-solid fa-file-shield text-blue-600 mr-2"></i>Compliance Status</h3>
                                 <ul class="space-y-3 text-sm font-medium text-slate-700">
@@ -646,6 +653,7 @@
                             </div>
                         </div>
 
+                        <!-- Col 3: Monthly Statements -->
                         <div>
                             <div class="bg-blue-50 border border-blue-200 rounded-lg p-5 h-full">
                                 <h3 class="font-bold text-blue-900 text-sm mb-4 border-b border-blue-200 pb-2"><i class="fa-solid fa-receipt mr-2"></i>Monthly Statements</h3>
@@ -666,6 +674,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -687,10 +696,30 @@
             const config = roleConfig[roleKey];
             document.getElementById('userEmail').innerText = config.email;
             document.querySelectorAll('.role-nav').forEach(nav => nav.classList.remove('active'));
+            
             const activeNav = document.getElementById(config.navId);
             activeNav.classList.add('active');
+            
             const firstButton = activeNav.querySelector(`button[onclick*="${config.defaultTab}"]`) || activeNav.querySelector('button');
             switchTab(config.defaultTab, firstButton);
+
+            // --- 动态控制 Feedback 表单权限 ---
+            const feedbackGrid = document.getElementById('feedback-grid');
+            const submitForm = document.getElementById('submit-feedback-form');
+            
+            if (feedbackGrid && submitForm) {
+                if (roleKey === 'client') {
+                    // 如果是 Client: 显示提交表单，排版恢复为两栏
+                    submitForm.style.display = 'block';
+                    feedbackGrid.classList.add('md:grid-cols-2');
+                    feedbackGrid.classList.remove('md:grid-cols-1');
+                } else {
+                    // 如果是 Management / Admin: 隐藏提交表单，历史记录变为单栏全宽
+                    submitForm.style.display = 'none';
+                    feedbackGrid.classList.remove('md:grid-cols-2');
+                    feedbackGrid.classList.add('md:grid-cols-1');
+                }
+            }
         }
 
         function switchTab(tabId, btnElement) {
@@ -710,4 +739,5 @@
         changeRole('admin');
     </script>
 </body>
+
 </html>
